@@ -1,0 +1,58 @@
+.logo {
+    text-align: center;
+}
+.link {
+  font-weight: bold;
+  font-size: 4em;
+  color: hsla(205, 69%, 43%, 1);
+  font-family: 'Ephesis', cursive;
+  text-decoration: none;
+}
+
+.line {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.room {
+  display: inline-block;
+  border-radius: 1em;
+  width: 20em;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 1.5em;
+}
+
+.number {
+  vertical-align: top;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Cuprum', sans-serif;
+  margin-left: 10%;
+  margin-right: 10%;
+  vertical-align: top;
+  font-size: 1.5em;
+}
+
+.payment {
+  text-align: center;
+  background-color: hsla(0, 0%, 94%, 1);
+  border-radius: 1em;
+  max-width: 30em;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.paytext {
+  display: inline-block;
+  vertical-align: top;
+  font-family: 'Cuprum', sans-serif;
+}
+
+@media (max-width: 600px) {
+  .payment {
+    max-width: 40em;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}

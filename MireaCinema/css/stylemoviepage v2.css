@@ -1,0 +1,98 @@
+.poster {
+width: 25%;
+border-radius: 3%;
+margin-top: 3%;
+}
+
+.screen {
+  display: inline-block;
+  vertical-align: top;
+  width: 70%;
+  margin-left: 6.5%;
+  margin-bottom: 9.3%;
+}
+
+
+
+.buypage {
+  margin-left: 11%;
+}
+
+.info {
+text-align: center;
+}
+
+.name {
+text-align: center;
+font-family: 'Cuprum', sans-serif;
+}
+
+.review {
+text-align: left;
+line-height: normal;
+font-family: 'Cuprum', sans-serif;
+width: 70%;
+margin-left: 9%;
+margin-top: 3%
+}
+
+.room {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 1%;
+  margin-top: 1%;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto
+  auto auto auto auto auto auto auto auto ;
+  width: 58%;
+  margin-left: 12.8%;
+}
+
+
+
+.place {
+  border: 4px solid #ffffff;
+  padding: 6px 6px;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 11px;
+}
+
+
+
+
+
+old
+
+<!--
+
+.places pstring {
+  display: inline-block;
+  margin-left: 11.8%;
+  width: 80%;
+  padding-bottom: 2.5%;
+}
+
+
+
+.places btnt2 {
+  padding: 6px 11px;
+  margin-right: 3px;
+  color: #ffffff;
+  list-style-type: none;
+  border-radius:10px;
+}
+
+.places btn {
+  padding: 6px 7px;
+  margin-right: 3px;
+  color: #ffffff;
+  list-style-type: none;
+  border-radius: 8px;
+}
+
+-->

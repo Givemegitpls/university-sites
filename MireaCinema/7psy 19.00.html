@@ -1,0 +1,155 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="./css/stylemoviepage v3.css" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width">
+  <title>Семь психопатов</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cuprum&display=swap');
+  </style>
+</head>
+
+<body>
+  <div>
+    <center>
+      <a href="mireacinema v2.html">
+        <img src="logo.png" class="logo">
+      </a>
+    </center>
+  </div>
+
+  <div class="name">
+    <h1>Семь психопатов</h1>
+  </div>
+  <div class="buypage">
+    <script> var show_id = 15; </script>
+    <img src="posters/7psy.jpg" class="poster">
+    <div class="room" style="--maincolor: 82;">
+
+      <img src="screen.png" class="screen">
+
+      <div class="grid-container" id="places">
+        <!--
+	<label class="chklabel">
+		<input type="checkbox">
+		<span class="checkmark place">1</span>
+	</label>
+    -->
+      </div>
+
+      <div id="total_wrapper">
+        <span id="total">
+          Сумма: <span id="total_price">0</span>р.
+        </span>
+        <button id="send_order" onclick="sendOrder();">Купить</button>
+      </div>
+
+      <div id="thanks">
+        Заказ принят.
+      </div>
+      <div id="error">
+        Извините, у нас что-то пошло не так :( <br> Перезагрузите страницу и попробуйте ещё раз.
+      </div>
+
+      <script>
+        var sum = 0;
+        var chosenPlaces = [];
+        var price = 200;
+
+        function newElement(tag, className, id, innerHTML, attr = {}) {
+          let elem = document.createElement(tag);
+          if (className) elem.className = className;
+          if (id) elem.id = id;
+          elem.innerHTML = innerHTML;
+
+          for (attr_name in attr)
+            elem.setAttribute(attr_name, attr[attr_name]);
+
+          elem.addTo = function(parent) {
+            parent.append(this);
+            return this;
+          }
+
+          return elem;
+        }
+
+        function serverRequest(data, url) {
+          const request = new XMLHttpRequest();
+          let params = data;
+          responsePromise = new Promise((resolve, reject) => {
+            request.open("POST", url, true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.addEventListener("readystatechange", () => {
+              if (request.readyState === 4) {
+                if (request.status === 200) {
+                  resolve(request.responseText);
+                } else {
+                  resolve('error!');
+                }
+              }
+
+            });
+            params = JSON.stringify(params);
+            request.send(params);
+          });
+          return responsePromise;
+        }
+
+        function initPlaces(count) {
+          show = {};
+          show.show_id = show_id;
+          serverRequest(show, '/MireaCinema/getplaces.php').then(answer => {
+            takenPlaces = JSON.parse(answer).taken_num;
+            places.innerHTML = '';
+            for (let i = 0; i < count; i++) {
+              let chklabel = newElement('label', 'chklabel', '', '').addTo(places);
+              let chkbox = newElement('input', '', 'place' + (i + 1), '', {
+                'type': 'checkbox'
+              }).addTo(chklabel);
+              if (takenPlaces.includes(i + 1))
+                chkbox.disabled = true;
+              chkbox.addEventListener('change', recalcSum);
+              let place = newElement('span', 'checkmark place', '', i + 1).addTo(chklabel);
+            }
+          });
+        }
+
+        function recalcSum() {
+          checkboxes = Array.from(document.querySelectorAll('#places input[type="checkbox"]:checked'));
+          sum = checkboxes.length * price;
+          chosenPlaces = checkboxes.map(chk => parseInt(chk.id.slice(5)));
+          total_price.innerHTML = sum;
+        }
+
+        function sendOrder() {
+          data = {places: chosenPlaces, show_id: show_id};
+          serverRequest(data, '/MireaCinema/order.php').then(answer => {
+            if (answer == '0')
+              thanks.style.display = 'block'
+            else error.style.display = 'block';
+          });
+        }
+
+        initPlaces(72);
+      </script>
+
+
+
+    </div>
+
+    <div class="info">
+      <div class="review">
+        <p>Непутевый писатель потерял вдохновение и никак не может
+          справиться с новым сценарием. Волей случая он оказывается
+          втянутым в похищение собаки, затеянное его эксцентричными дружками.
+          Выясняется, что украденное животное — любимый пёс главного
+          местного гангстера, которому ничего не стоит в два
+          счета вычислить и уничтожить оболтусов.</p>
+      </div>
+    </div>
+</body>
+
+</html>

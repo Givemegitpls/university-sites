@@ -1,0 +1,53 @@
+.logo {
+  text-align: center;
+  font-weight: bold;
+  font-size: 4em;
+  color: hsla(205, 69%, 43%, 1);
+  font-family: 'Ephesis', cursive;
+}
+
+.hellotxt {
+  vertical-align: top;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Cuprum', sans-serif;
+  margin-left: 10%;
+  margin-right: 10%;
+  vertical-align: top;
+}
+
+.line {
+    text-align: center;
+}
+
+.vars {
+  display: inline-block;
+  vertical-align: top;
+  font-family: 'Cuprum', sans-serif;
+  width: 35%;
+  max-width: 20em;
+  height: 4em;
+  margin-left: 1em;
+  margin-right: 1em;
+  background-color: hsla(0, 0%, 97%, 1);
+  border-radius: 1em;
+  padding: 1em;
+  transition-duration: 0.3s;
+}
+
+.rooms {
+  color: hsla(0, 0%, 20%, 1);
+  text-decoration: none;
+}
+
+.vars:hover {
+	background-color: hsla(0, 0%, 92%, 1);;
+}
+
+@media (max-width: 600px) {
+  .vars {
+  margin-left: 0em;
+  margin-right: 0em;
+  height: 11em;
+  }
+}
